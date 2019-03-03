@@ -1,0 +1,2877 @@
+<!DOCTYPE html>
+<html ng-app="ionicApp">
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+
+		<title>兼职App</title>
+
+		<link href="https://cdn.bootcss.com/ionic/1.3.2/css/ionic.css" rel="stylesheet">
+		<!--<script type="text/javascript" src="js/jquery-2.1.0.js"></script>-->
+		<script src="https://cdn.bootcss.com/ionic/1.3.2/js/ionic.bundle.min.js"></script>
+		<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.js"></script>-->
+		<!--<script src="http://106.13.44.33:3000/socket.io/socket.io.js"></script>-->
+		<script src="https://cdn.bootcss.com/socket.io/2.1.1/socket.io.js"></script>
+		<!--<script src="http://cdn.static.runoob.com/libs/angular.js/1.4.6/angular.min.js"></script>-->
+		<script type="text/javascript">
+			const socket = io('http://106.13.44.33:3000/');
+
+			function aaaa(tempJsonOfChatsItem, scopeId, newChat) {
+				for(var i = 0; i < tempJsonOfChatsItem.length; i++) {
+					if(tempJsonOfChatsItem[i].id == scopeId) {
+						tempJsonOfChatsItem[i].lastMassage = newChat.massage;
+						tempJsonOfChatsItem[i].time = newChat.time;
+						break;
+					}
+				}
+				return tempJsonOfChatsItem;
+			}
+			angular.module('ionicApp', ['ionic'])
+				.controller('SlideController', function($scope) {
+
+					$scope.myActiveSlide = 0;
+
+				})
+				///////////////////////
+				.run(function($ionicPlatform) {
+					$ionicPlatform.ready(function() {
+						if(window.cordova && window.cordova.plugins.Keyboard) {
+							cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
+						}
+						if(window.StatusBar) {
+							//StatusBar.styleDefault();
+						}
+					});
+				})
+				.controller('asintend', ['$scope', '$ionicPopup', '$timeout', function($scope, $ionicPopup, $timeout) {
+					$scope.show = function() {
+						var hideSheet = $ionicPopup.show({
+							template: '\
+			        		<div class="row">\
+				        		<a class="col button">计算机</a>\
+				        		<a class="col button">计算机</a>\
+				        		<a class="col button">计算机</a>\
+			        		</div>\
+			        		<div class="row">\
+				        		<a class="col button">计算机</a>\
+				        		<a class="col button">计算机</a>\
+				        		<a class="col button">计算机</a>\
+			        		</div>\
+			        		<div class="row">\
+				        		<a class="col button">计算机</a>\
+				        		<a class="col button">计算机</a>\
+				        		<a class="col button">计算机</a>\
+			        		</div>\
+			        		',
+							title: '请选择',
+							scope: $scope,
+							buttons: [{
+									text: 'Cancel'
+								},
+								{
+									text: '<b>Save</b>',
+									type: 'button-positive',
+									onTap: function(e) {
+										if(!$scope.data.wifi) {
+											//不允许用户关闭，除非他键入wifi密码
+											e.preventDefault();
+										} else {
+											return $scope.data.wifi;
+										}
+									}
+								},
+							]
+						});
+					};
+				}])
+				.controller('askind', ['$scope', '$ionicPopup', '$timeout', function($scope, $ionicPopup, $timeout) {
+					$scope.show = function() {
+						var hideSheet = $ionicPopup.show({
+							template: '\
+			        		<div class="row">\
+				        		<a class="col button">计算机</a>\
+				        		<a class="col button">计算机</a>\
+				        		<a class="col button">计算机</a>\
+			        		</div>\
+			        		<div class="row">\
+				        		<a class="col button">计算机</a>\
+				        		<a class="col button">计算机</a>\
+				        		<a class="col button">计算机</a>\
+			        		</div>\
+			        		<div class="row">\
+				        		<a class="col button">计算机</a>\
+				        		<a class="col button">计算机</a>\
+				        		<a class="col button">计算机</a>\
+			        		</div>\
+			        		',
+							title: '请选择',
+							scope: $scope,
+							buttons: [{
+									text: 'Cancel'
+								},
+								{
+									text: '<b>Save</b>',
+									type: 'button-positive',
+									onTap: function(e) {
+										if(!$scope.data.wifi) {
+											//不允许用户关闭，除非他键入wifi密码
+											e.preventDefault();
+										} else {
+											return $scope.data.wifi;
+										}
+									}
+								},
+							]
+						});
+
+					};
+				}])
+				.controller('assize', ['$scope', '$ionicPopup', '$timeout', function($scope, $ionicPopup, $timeout) {
+					$scope.show = function() {
+						var hideSheet = $ionicPopup.show({
+							template: '\
+			        		<div class="row">\
+				        		<a class="col button">计算机</a>\
+				        		<a class="col button">计算机</a>\
+				        		<a class="col button">计算机</a>\
+			        		</div>\
+			        		<div class="row">\
+				        		<a class="col button">计算机</a>\
+				        		<a class="col button">计算机</a>\
+				        		<a class="col button">计算机</a>\
+			        		</div>\
+			        		<div class="row">\
+				        		<a class="col button">计算机</a>\
+				        		<a class="col button">计算机</a>\
+				        		<a class="col button">计算机</a>\
+			        		</div>\
+			        		',
+							title: '请选择',
+							scope: $scope,
+							buttons: [{
+									text: 'Cancel'
+								},
+								{
+									text: '<b>Save</b>',
+									type: 'button-positive',
+									onTap: function(e) {
+										if(!$scope.data) {
+
+											e.preventDefault();
+										} else {
+
+											return $scope.data;
+										}
+									}
+								},
+							]
+						});
+
+					};
+				}])
+				////////////////////////////////
+				.config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
+					$ionicConfigProvider.platform.ios.tabs.style('standard');
+					$ionicConfigProvider.platform.ios.tabs.position('bottom');
+					$ionicConfigProvider.platform.android.tabs.style('standard');
+					$ionicConfigProvider.platform.android.tabs.position('bottom');
+
+					$ionicConfigProvider.platform.ios.navBar.alignTitle('center');
+					$ionicConfigProvider.platform.android.navBar.alignTitle('center');
+
+					$ionicConfigProvider.platform.ios.backButton.previousTitleText('').icon('ion-ios-arrow-thin-left');
+					//$ionicConfigProvider.platform.android.backButton.previousTitleText('').icon('ion-android-arrow-back');
+					$ionicConfigProvider.platform.android.backButton.previousTitleText('').icon('ion-ios-arrow-left');
+					$ionicConfigProvider.platform.ios.views.transition('ios');
+					$ionicConfigProvider.platform.android.views.transition('android');
+					$stateProvider
+						.state('tabs', {
+							url: "/tab",
+							templateUrl: "templates/tabs.html",
+							controller: "tabCtrl"
+						})
+						.state('tabs.home', {
+							url: "/home",
+							views: {
+								'home-tab': {
+									templateUrl: "templates/home.html",
+									controller: 'HomeTabCtrl'
+								}
+							}
+						})
+
+						.state('tabs.resume', {
+							url: "/resume",
+							views: {
+								'resume-tab': {
+									templateUrl: "templates/resume.html"
+								}
+							}
+						})
+						.state('tabs.person', {
+							url: "/person",
+							views: {
+								'person-tab': {
+									templateUrl: "templates/person.html",
+									controller: "personCtrl"
+								}
+							}
+						})
+						.state('tabs.information', {
+							url: "/information",
+							views: {
+								'person-tab': {
+									templateUrl: "templates/information.html"
+								}
+							}
+						})
+						.state('tabs.record', {
+							url: "/record",
+							views: {
+								'home-tab': {
+									templateUrl: "templates/record.html",
+									controller: "recordCtrl"
+								}
+							}
+						})
+						.state('tabs.raiders', {
+							url: "/raiders",
+							views: {
+								'home-tab': {
+									templateUrl: "templates/raiders.html"
+								}
+							}
+						})
+						.state('tabs.find', {
+							url: "/find",
+							views: {
+								'person-tab': {
+									templateUrl: "templates/find.html"
+								}
+							}
+						})
+						.state('tabs.manages', {
+							url: "/manages",
+							views: {
+								'person-tab': {
+									templateUrl: "templates/manages.html",
+									controller: 'managesCtrl'
+								}
+							}
+						})
+						.state('tabs.managework', {
+							url: "/managework",
+							views: {
+								'person-tab': {
+									templateUrl: "templates/managework.html",
+									controller: 'manageworkCtrl'
+								}
+							}
+						})
+						.state('tabs.managecom', {
+							url: "/managecom",
+							views: {
+								'person-tab': {
+									templateUrl: "templates/managecom.html",
+									controller: 'managecomCtrl'
+								}
+							}
+						})
+						.state('tabs.managecon', {
+							url: "/managecon",
+							views: {
+								'person-tab': {
+									templateUrl: "templates/managecon.html",
+									controller: 'manageconCtrl'
+								}
+							}
+						})
+						.state('tabs.employee', {
+							url: "/employee",
+							views: {
+								'person-tab': {
+									templateUrl: "templates/employee.html",
+									controller: 'employeeCtrl'
+								}
+							}
+						})
+						.state('tabs.manages_detail', {
+							url: "/manages_detail",
+							views: {
+								'person-tab': {
+									templateUrl: "templates/manages_detail.html",
+									controller: 'manages_detailCtrl'
+								}
+							}
+						})
+						.state('tabs.charts', {
+							url: "/charts",
+							views: {
+								'home-tab': {
+									templateUrl: "templates/charts.html",
+									controller: 'chartsCtrl'
+								}
+							}
+						})
+						.state('tabs.collect', {
+							url: "/collect",
+							views: {
+								'person-tab': {
+									templateUrl: "templates/collect.html",
+									controller: "collectCtrl"
+								}
+							}
+						})
+						.state('tabs.history', {
+							url: "/history",
+							views: {
+								'person-tab': {
+									templateUrl: "templates/history.html",
+									controller: "historyCtrl"
+								}
+							}
+						})
+						.state('tabs.create1', {
+							url: "/create1",
+							views: {
+								'resume-tab': {
+									templateUrl: "templates/create1.html",
+									controller: 'CreateCtrl'
+								}
+							}
+						})
+						.state('tabs.center', {
+							url: "/center",
+							views: {
+								'person-tab': {
+									templateUrl: "templates/center.html",
+									controller: 'CenterCtrl',
+								}
+							}
+						})
+						.state('tabs.nickname', {
+							url: "/nickname/:nickName",
+							views: {
+								'person-tab': {
+									templateUrl: "templates/nickname.html",
+									controller: "NickNameCtrl"
+								}
+							}
+						})
+						.state('tabs.birthday', {
+							url: "/birthday",
+							views: {
+								'person-tab': {
+									templateUrl: "templates/birthday.html",
+									controller: "BirthdayCtrl"
+								}
+							}
+						})
+						.state('tabs.sex', {
+							url: "/sex",
+							views: {
+								'person-tab': {
+									templateUrl: "templates/sex.html",
+									controller: "SexCtrl"
+								}
+							}
+						})
+						.state('tabs.name', {
+							url: "/name/:name",
+							views: {
+								'person-tab': {
+									templateUrl: "templates/name.html",
+									controller: "NameCtrl"
+								}
+							}
+						})
+						.state('tabs.phone', {
+							url: "/phone/:phone",
+							views: {
+								'person-tab': {
+									templateUrl: "templates/phone.html",
+									controller: "PhoneCtrl"
+								}
+							}
+						})
+						.state('tabs.massage', {
+							url: "/massage",
+							views: {
+								'massage-tab': {
+									templateUrl: "templates/massage.html",
+									controller: "massageCtrl"
+								}
+							}
+						})
+						.state('tabs.companyinformation', {
+							url: "/companyinformation/:companyId",
+							views: {
+								'home-tab': {
+									templateUrl: "templates/companyinformation.html",
+									controller: 'companyinformationCtrl'
+								}
+							}
+						})
+						.state('tabs.jobinformation', {
+							url: "/jobinformation/:job",
+							views: {
+								'home-tab': {
+									templateUrl: "templates/jobinformation.html",
+									controller: 'JobinformationCtrl'
+								}
+							}
+						})
+						.state('tabs.massage_detail', {
+							url: "/massage_detail/:id/:companyId",
+							views: {
+								'massage-tab': {
+									templateUrl: "templates/massage_detail.html",
+									controller: "massageDetailCtrl"
+								}
+							}
+						})
+
+						.state('tabs.login', {
+							url: "/login",
+							views: {
+								'home-tab': {
+									templateUrl: "templates/login.html",
+									controller: 'LoginCtrl'
+								}
+							}
+						})
+						.state('tabs.namelogin', {
+							url: "/namelogin",
+							views: {
+								'home-tab': {
+									templateUrl: "templates/namelogin.html",
+									controller: 'NameloginCtrl'
+								}
+							}
+						})
+						.state('tabs.register', {
+							url: "/register",
+							views: {
+								'home-tab': {
+									templateUrl: "templates/register.html",
+									controller: 'RegisterCtrl'
+								}
+							}
+						});
+
+					$urlRouterProvider.otherwise("/tab/namelogin");
+
+				})
+				.controller("tabCtrl", function($scope, $ionicModal, $http, $rootScope) {
+					//					$ionicModal.fromTemplateUrl('templates/searchModal.html', {
+					//						scope: $scope
+					//					}).then(function(modal) {
+					//						$scope.modal = modal;
+					//					});
+					//					$scope.show = function() {
+					//						$scope.modal.show();
+					//					}
+					$rootScope.url = 'http://106.13.44.33:3000/';
+
+				})
+				.controller("recordCtrl", function($scope, $http, $rootScope) {
+					var storage = window.localStorage;
+					$http({
+						method: "GET",
+						url: $rootScope.url + 'user/application',
+						headers: {
+							"token": storage.getItem("token")
+						}
+					}).then(function successCallback(response) {
+						console.log(response);
+						if(response.data.success == true) {
+							console.log(response.data.success);
+							$scope.records = response.data.msg;
+							for(var i = 0; i < $scope.records.length; i++) {
+								$http({
+									method: "GET",
+									url: $rootScope.url + 'company/' + $scope.records[i].job.company,
+									headers: {
+										"token": storage.getItem("token")
+									}
+								}).then(function successCallback(response) {
+									console.log(response);
+									if(response.data.success == true) {
+										$scope.records[i].company = response.data.msg;
+									}
+
+								}, function errorCallback(response) {
+									console.log("网络连接失败！");
+								});
+							}
+						}
+
+					}, function errorCallback(response) {
+						console.log("网络连接失败！");
+					});
+
+				})
+				.controller('HomeTabCtrl', function($scope, $http, $rootScope, $receiveMsg) { //,$ionicNavBarDelegate
+					console.log('HomeTabCtrl');
+					//$urlRouterProvider.otherwise("/tab/home");
+					var storage = window.localStorage;
+					//					storage.clear();
+					//测试时初始化chatsItem,后期删除
+					//					storage.setItem("chatsItem5b9b0dce669e6334b64d0d7e", JSON.stringify([{
+					//						"id": "5b9e6db6d52369547f394011",
+					//						"name": "刘禹超",
+					//						"time": null,
+					//						"lastMassage": null,
+					//						"displayPicture": "img/1.jpg"
+					//					}]));
+					//					storage.setItem("5b9b0dce669e6334b64d0d7elocalChats5b9e6db6d52369547f394011", JSON.stringify([{
+					//						"id": "5b9e6db6d52369547f394011",
+					//						"name": "刘禹超",
+					//						"time": "2018/9/7",
+					//						"massage": "你好！",
+					//						"displayPicture": "img/1.jpg",
+					//						"self": false
+					//					}]));
+
+					//测试时初始化用户id
+					//					storage.setItem("id", 1111);
+					console.log(storage.getItem("token"));
+					$http({
+						method: "GET",
+						url: $rootScope.url + 'job/default',
+						headers: {
+							"token": storage.getItem("token")
+						}
+					}).then(function successCallback(response) {
+						console.log(response);
+						$scope.jobs = response.data.msg;
+					}, function errorCallback(response) {
+						console.log("error " + response);
+					});
+					$http({
+						method: "GET",
+						url: $rootScope.url + 'user',
+						headers: {
+							"token": storage.getItem("token")
+						}
+					}).then(function successCallback(response) {
+						console.log(response);
+						storage.setItem("_id", response.data.msg._id);
+						storage.setItem("nickname", response.data.msg.nickname);
+						//						storage.setItem("chatsItem" + "5b9e6db6d52369547f394011", JSON.stringify([{//storage.setItem("chatsItem" + response.data.msg._id, JSON.stringify([{
+						//							"id": "5b9b0dce669e6334b64d0d7e",
+						//							"name": "熊思敏",
+						//							"time": null,
+						//							"lastMassage": null,
+						//							"displayPicture": "img/1.jpg"
+						//						}]));
+						//						storage.setItem("chatsItem" + "5b9b0dce669e6334b64d0d7e", JSON.stringify([{
+						//							"id": "5b9e6db6d52369547f394011",
+						//							"name": "刘禹超",
+						//							"time": null,
+						//							"lastMassage": null,
+						//							"displayPicture": "img/2.jpg"
+						//						}]));
+						//						storage.setItem("5b9b0dce669e6334b64d0d7e" + "localChats"+"5b9e6db6d52369547f394011", JSON.stringify([{//storage.setItem(response.data.msg._id + "localChats5b9e6db6d52369547f394011", JSON.stringify([{
+						//							"id": "5b9e6db6d52369547f394011",
+						//							"name": "刘禹超",
+						//							"time": "2018/9/7",
+						//							"massage": "你好！",
+						//							"displayPicture": "img/1.jpg",
+						//							"self": false
+						//						}]));
+						//						storage.setItem("5b9e6db6d52369547f394011" + "localChats"+"5b9b0dce669e6334b64d0d7e", JSON.stringify([{//storage.setItem(response.data.msg._id + "localChats5b9e6db6d52369547f394011", JSON.stringify([{
+						//							"id": "5b9b0dce669e6334b64d0d7e",
+						//							"name": "熊思敏",
+						//							"time": "2018/9/7",
+						//							"massage": "你好！",
+						//							"displayPicture": "img/1.jpg",
+						//							"self": false
+						//						}]));
+					}, function errorCallback(response) {
+						console.log("error " + response);
+					});
+					$receiveMsg.get($scope); //进入首页后就开始监听新消息
+					$scope.search = function(keyword) {
+						if(keyword == null || keyword == undefined || keyword == "") {
+							console.log("搜索内容不能为空！");
+						} else {
+							$http({
+								method: "POST",
+								url: $rootScope.url + 'job/search',
+								data: {
+									keyword: keyword
+								},
+								headers: {
+									"token": storage.getItem("token")
+								}
+							}).then(function successCallback(response) {
+								console.log(response);
+								$scope.jobs = response.data.msg;
+							}, function errorCallback(response) {
+								console.log("error " + response);
+							});
+						}
+
+					}
+
+				})
+
+				.controller('managecomCtrl', function($scope, $http) {
+					console.log('managecomCtrl');
+					$scope.submit = function() {
+						$http({
+							method: "POST",
+							url: '', //post where 公司id <=｛居住地，认证图片｝
+							data: {}
+						}).then(function successCallback(response) {
+							console.log(response);
+						}, function errorCallback(response) {
+							console.log("error " + response);
+						});
+					};
+					$http({
+						method: "GET",
+						url: "" //get where 公司id =>｛该公司信息｝
+					}).then(function successCallback(response) {
+						console.log(response);
+					}, function errorCallback(response) {
+						console.log("error " + response);
+					});
+				})
+				.controller('JobinformationCtrl', function($scope, $http, $stateParams, $rootScope, $state) {
+
+					var storage = window.localStorage;
+					//					console.log('JobinformationCtrl');
+					console.log($stateParams.job);
+					$http({
+						method: 'GET',
+						url: $rootScope.url + 'company/' + JSON.parse($stateParams.job).company,
+						headers: {
+							"token": storage.getItem("token")
+						}
+					}).then(function successCallback(response) {
+						$scope.company = response.data.msg;
+						console.log(response);
+						//判断是不是自己的公司，如果是自己的公司，“联系他”按钮不可用
+						if($scope.company.admin == storage.getItem("_id")) {
+							$scope.isSelfCompany = true;
+						} else {
+							$scope.isSelfCompany = false;
+						}
+						//判断是否已经收藏
+						$scope.job = JSON.parse($stateParams.job);
+						if(storage.getItem("collects") != null && storage.getItem("collects") != "[null]" && storage.getItem("collects") != []) {
+							var tempCollects = JSON.parse(storage.getItem("collects"));
+							console.log(22);
+						} else {
+							tempCollects = [];
+						}
+						$scope.collected = false;
+						console.log($scope.job);
+						console.log(tempCollects);
+						console.log(111);
+						for(var i = 0; i < tempCollects.length; i++) {
+
+							if(tempCollects[i]._id == $scope.job._id) { //如果该职位已经收藏
+								$scope.collected = true;
+								break;
+							}
+						}
+						//记录历史
+						if(storage.getItem("historys") != null && storage.getItem("historys") != [] && storage.getItem("historys") != "[null]") {
+							var tempHistorys = JSON.parse(storage.getItem("historys"));
+						} else {
+							tempHistorys = [];
+						}
+						var recorded = 0;
+						for(var i = 0; i < tempHistorys.length; i++) {
+
+							if(tempHistorys[i]._id == $scope.job._id) {
+								recorded = 1;
+								break;
+							}
+						}
+						if(recorded == 0) {
+							tempHistorys.push($scope.job);
+							console.log("这是浏览记录");
+							console.log(tempHistorys);
+							storage.setItem("historys", JSON.stringify(tempHistorys));
+						}
+						// 请求成功执行代码
+					}, function errorCallback(response) {
+						// 请求失败执行代码
+					});
+
+					$scope.collectOrDisCollect = function(job) {
+						//						console.log(job);
+						if($scope.collected) { //已收藏，点击则取消收藏
+							$scope.collected = false;
+							if(storage.getItem("collects") != "[null]" && storage.getItem("collects") != [] && storage.getItem("collects") != null) {
+								var tempCollects = JSON.parse(storage.getItem("collects"));
+								//								console.log(tempCollects);
+								//								console.log(tempCollects.length);
+								var index = -1;
+								for(var i = 0; i < tempCollects.length; i++) {
+									console.log(tempCollects[i]._id);
+									console.log($scope.job._id);
+
+									if(tempCollects[i]._id == $scope.job._id) {
+										index = i;
+
+										break;
+									}
+								}
+								//								console.log(index);
+								if(index != -1) {
+									console.log(index);
+
+									tempCollects.splice(index, 1); //删除该收藏记录
+									console.log(tempCollects);
+									storage.setItem("collects", JSON.stringify(tempCollects));
+									console.log("取消收藏成功！");
+								}
+
+							}
+						} else { //没有收藏，则收藏
+
+							$scope.collected = true;
+							//如果本地还没有任何收藏
+							if(storage.getItem("collects") == null || storage.getItem("collects") == "[null]" || storage.getItem("collects") == null) {
+								var temp = [];
+								temp.push($scope.job);
+								storage.setItem("collects", JSON.stringify(temp));
+								console.log("收藏成功！(1)");
+							} else {
+								var tempCollects = JSON.parse(storage.getItem("collects"));
+								tempCollects.push($scope.job);
+								storage.setItem("collects", JSON.stringify(tempCollects));
+								console.log("收藏成功！(2)");
+							}
+						}
+					}
+					$scope.setJmpCmd = function() {
+						console.log($scope.company.admin);
+						if(!(storage.getItem("_id") == $scope.company.admin)) {
+							storage.setItem("jmpCmd", true);
+							storage.setItem("partnerId", $scope.company.admin);
+							storage.setItem("companyId", $scope.company._id);
+						} else {
+							console.log("fdf");
+						}
+					}
+				})
+				.controller('companyinformationCtrl', function($scope, $http, $stateParams, $rootScope) {
+					var storage = window.localStorage;
+					console.log('companyinformationCtrl');
+					$http({
+						method: 'GET',
+						url: $rootScope.url + 'company/' + $stateParams.companyId,
+						headers: {
+							"token": storage.getItem("token")
+						}
+					}).then(function successCallback(response) {
+						$scope.company = response.data.msg;
+					}, function errorCallback(response) {
+						// 请求失败执行代码
+					});
+
+				})
+				.controller('manageconCtrl', function($scope, $http) {
+					console.log('manageconCtrl');
+					$http({
+						method: "GET",
+						url: "" //get where 公司id =>｛该公司信息｝
+					}).then(function successCallback(response) {
+						console.log(response);
+
+					}, function errorCallback(response) {
+						console.log("error " + response);
+					});
+				})
+				.controller('employeeCtrl', function($scope, $http) {
+					console.log('employeeCtrl');
+					$http({
+						method: "GET",
+						url: "" // get where 公司id +职位id =>｛该职位信息表｝
+					}).then(function successCallback(response) {
+						console.log(response);
+
+					}, function errorCallback(response) {
+						console.log("error " + response);
+					});
+				})
+				.controller('manages_detailCtrl', function($scope, $http) {
+					console.log('manages_detailCtrl');
+					$http({
+						method: "GET",
+						url: "" //get where 用户id => {用户的所有简历 s}
+					}).then(function successCallback(response) {
+						console.log(response);
+
+					}, function errorCallback(response) {
+						console.log("error " + response);
+					});
+				})
+				.controller('managesCtrl', function($scope, $http) {
+					console.log('managesCtrl');
+					$http({
+						method: "GET",
+						url: "" //get   where 公司id =》  ｛申请信息表｝
+					}).then(function successCallback(response) {
+						console.log(response);
+						$scope.data = response.data;
+					}, function errorCallback(response) {
+						console.log("error " + response);
+					});
+				})
+				.controller('manageworkCtrl', function($scope, $http, $state) {
+					console.log('manageworkCtrl');
+					$scope.goback = function() {
+						$state.go("tabs.finds")
+					};
+					$http({
+						method: "GET",
+						url: "" //get   where 公司id orderby 职位id =》  {职位｛雇员列表s｝，职位｛雇员列表s｝，。。。}
+					}).then(function successCallback(response) {
+						console.log(response);
+						$scope.occup = response.data.occupation;
+						$scope.employees = response.data.employees;
+					}, function errorCallback(response) {
+						console.log("error " + response);
+					});
+				})
+				.controller('chartsCtrl', function($scope) {
+					console.log('chartsCtrl');
+					$scope.myActiveSlide = 1
+				})
+				.controller('ResumeTabCtrl', function($scope) {
+					console.log('ResumeTabCtrl');
+				})
+				.controller("CreateCtrl", function($scope, $stateParams, $state, $http) {
+					console.log($stateParams.name, $stateParams.sex, $stateParams.year, $stateParams.eduaction, $stateParams.workyear, $stateParams.email, $stateParams.school, $stateParams.tel);
+					$scope.name = $stateParams.name;
+					$scope.sex = $stateParams.sex;
+					$scope.year = $stateParams.year;
+					$scope.education = $stateParams.education;
+					$scope.workyear = $stateParams.workyear;
+					$scope.email = $stateParams.email;
+					$scope.school = $stateParams.school;
+					$scope.tel = $stateParams.tel;
+					$scope.save = function() {
+						$http({
+							method: 'GET',
+							url: 'http://127.0.0.1:8020/test3/1.txt',
+							data: {
+								name: $scope.name,
+								sex: $scope.sex,
+								year: $scope.year,
+								education: $scope.eduacation,
+								workyear: $scope.workyear,
+								email: $scope.email,
+								tel: $scope.tel,
+								id: 1111 //后期从本地存储中获取
+							}
+						}).then(function successCallback(response) {
+							console.log(response.data);
+							$state.go("tabs.home");
+							console.log("成功！");
+							// 请求成功执行代码
+						}, function errorCallback(response) {
+							// 请求失败执行代码
+							$state.go("tabs.center");
+							console.log("失败！");
+						});
+					}
+				})
+				.controller('CenterCtrl', function($scope, $http) {
+					console.log('CenterCtrl');
+					$http({
+						method: 'GET',
+						url: 'http://127.0.0.1:8020/test2/my.json'
+					}).then(function successCallback(response) {
+						console.log(response);
+						$scope.center = response.data.center;
+						console.log($scope.center);
+						// 请求成功执行代码
+					}, function errorCallback(response) {
+						// 请求失败执行代码
+					});
+				})
+				.controller("NickNameCtrl", function($scope, $stateParams, $state, $http) {
+					console.log($stateParams.nickName);
+					$scope.name = $stateParams.nickName;
+					$scope.save = function() {
+						$http({
+							method: 'GET',
+							url: 'http://127.0.0.1:8020/test2/1.txt',
+							data: {
+								name: $scope.name,
+								id: 1111 //后期从本地存储中获取
+							}
+						}).then(function successCallback(response) {
+							console.log(response.data);
+							$state.go("tabs.center");
+							console.log("成功！");
+							// 请求成功执行代码
+						}, function errorCallback(response) {
+							// 请求失败执行代码
+							$state.go("tabs.center");
+							console.log("失败！");
+						});
+					}
+
+				})
+				.controller("PhoneCtrl", function($scope, $stateParams, $state, $http) {
+					console.log($stateParams.phone);
+					$scope.phone = $stateParams.phone;
+					$scope.save = function() {
+						$http({
+							method: 'GET',
+							url: 'http://127.0.0.1:8020/test2/1.txt',
+							data: {
+								phone: $scope.phone,
+								id: 1111 //后期从本地存储中获取
+							}
+						}).then(function successCallback(response) {
+							console.log(response.data);
+							$state.go("tabs.center");
+							console.log("成功！");
+							// 请求成功执行代码
+						}, function errorCallback(response) {
+							// 请求失败执行代码
+							$state.go("tabs.center");
+							console.log("失败！");
+						});
+					}
+				})
+				.controller("SexCtrl", function($scope, $stateParams, $state, $http) {
+					console.log($stateParams.sex);
+					$scope.sex = $stateParams.sex;
+					$scope.save = function() {
+						$http({
+							method: 'GET',
+							url: 'http://127.0.0.1:8020/test2/1.txt',
+							data: {
+								phone: $scope.sex,
+								id: 1111 //后期从本地存储中获取
+							}
+						}).then(function successCallback(response) {
+							console.log(response.data);
+							$state.go("tabs.center");
+							console.log("成功！");
+							// 请求成功执行代码
+						}, function errorCallback(response) {
+							// 请求失败执行代码
+							$state.go("tabs.center");
+							console.log("失败！");
+						});
+					}
+				})
+				.controller("BirthdayCtrl", function($scope, $stateParams, $state, $http) {
+					$scope.year = $stateParams.year;
+					$scope.month = $stateParams.month;
+					$scope.day = $stateParams.day;
+					$scope.save = function() {
+						$http({
+							method: 'GET',
+							url: 'http://127.0.0.1:8020/test2/1.txt',
+							data: {
+								year: $scope.year,
+								month: $scope.month,
+								day: $scope.day,
+								id: 1111 //后期从本地存储中获取
+							}
+						}).then(function successCallback(response) {
+							console.log(response.data);
+							$state.go("tabs.center");
+							console.log("成功！");
+							// 请求成功执行代码
+						}, function errorCallback(response) {
+							// 请求失败执行代码
+							$state.go("tabs.center");
+							console.log("失败！");
+						});
+					}
+				})
+				.controller("NameCtrl", function($scope, $stateParams, $state, $http) {
+					console.log($stateParams.name);
+					$scope.name = $stateParams.name;
+					$scope.save = function() {
+						$http({
+							method: 'GET',
+							url: 'http://127.0.0.1:8020/test2/1.txt',
+							data: {
+								name: $scope.name,
+								id: 1111 //后期从本地存储中获取
+							}
+						}).then(function successCallback(response) {
+							console.log(response.data);
+							$state.go("tabs.center");
+							console.log("成功！");
+							// 请求成功执行代码
+						}, function errorCallback(response) {
+							// 请求失败执行代码
+							$state.go("tabs.center");
+							console.log("失败！");
+						});
+					}
+				})
+				.controller('massageCtrl', function($scope, $http, $receiveMsg, $interval) {
+					//					$state.go("tabs.massage_detail");
+					//					location.href="#/tab/massage_detail/123";
+
+					console.log('massageCtrl');
+					var storage = window.localStorage;
+
+					$interval(function() {
+						$scope.massages = JSON.parse(storage.getItem("chatsItem" + storage.getItem("_id"))); //storage.getItem("_id")
+						//						$ionicScrollDelegate.resize();
+						if(storage.getItem("jmpCmd") == "true") {
+							location.href = "#/tab/massage_detail/" + storage.getItem("partnerId") + "/" + storage.getItem("companyId");
+						}
+					}, 100);
+					//					$receiveMsg.get($scope);
+
+				})
+				.controller('massageDetailCtrl', function($scope, $stateParams, $http, $rootScope, $interval, $ionicScrollDelegate) {
+					//					focus("msgInput");
+
+					document.getElementById("msgInput").focus();
+					//滚动到底部(不起作用？？？？？)
+					$ionicScrollDelegate.scrollBottom();
+					//获取上级页面参数
+					$scope.id = $stateParams.id;
+					console.log($stateParams.companyId);
+					if($stateParams.companyId != null && $stateParams.companyId != "null") {
+						$scope.companyId = $stateParams.companyId;
+					} else {
+						$scope.companyId = null;
+					}
+
+					console.log($scope.id);
+					//实例化localStorage
+					var storage = window.localStorage;
+					//根据id获取当前聊天对象
+					storage.setItem("jmpCmd", false);
+					storage.setItem("partnerId", null);
+					console.log(storage.getItem("chatsItem" + storage.getItem("_id")));
+					if(storage.getItem("chatsItem" + storage.getItem("_id")) != null && storage.getItem("chatsItem" + storage.getItem("_id")) != "[null]") {
+						var chatPartner = JSON.parse(storage.getItem("chatsItem" + storage.getItem("_id"))).filter(function(e) {
+							//						console.log(e);
+							return e.id == $scope.id;
+						});
+					} else {
+						var chatPartner = [];
+					}
+
+					if(chatPartner.length > 1) {
+						console.log("error！chatsItem中有多个id为" + $scope.id + "的数据");
+					} else if(chatPartner.length == 0) { //本地没有记录
+						console.log("chatsItem没有id为" + $scope.id + "的数据");
+						if($scope.companyId != null) {
+							$http({
+								method: 'GET',
+								url: $rootScope.url + 'company/' + $scope.companyId,
+								headers: {
+									"token": storage.getItem("token")
+								}
+							}).then(function successCallback(response) {
+								console.log(response);
+								chatPartner.name = response.data.msg.name;
+								chatPartner.id = response.data.msg.admin;
+								$scope.chatPartner = chatPartner;
+								console.log("成功！");
+								console.log($scope.chatPartner);
+								// 请求成功执行代码
+							}, function errorCallback(response) {
+								// 请求失败执行代码
+								console.log("失败！");
+							});
+						}
+					} else {
+						$scope.chatPartner = chatPartner[0];
+						//						console.log($scope.chatPartner.name);
+					}
+					console.log(storage.getItem("_id"));
+					console.log($scope.id);
+					$scope.chats = JSON.parse(storage.getItem(storage.getItem("_id") + "localChats" + $scope.id));
+					if($scope.chats == null || $scope.chats == "[null]") {
+						$scope.chats = [];
+					}
+					$interval(function() {
+						$scope.chats = JSON.parse(storage.getItem(storage.getItem("_id") + "localChats" + $scope.id));
+//						console.log($scope.id);
+
+//						console.log(storage.getItem("_id"));
+						//						$ionicScrollDelegate.resize();
+					}, 100);
+
+					console.log($scope.chats);
+					$scope.sendMsg = function(msg) {
+						if(msg != null || msg != undefined) {
+							var date = new Date();
+							var newChat1 = { //////newChat1是存在本地的newChat2是发出去的，唯一的不同：“self”
+								"id": storage.getItem("_id"), //当前登陆者的id
+								"name": storage.getItem("nickname"),
+								"time": date.getHours() + ":" + date.getMinutes(),
+								"massage": msg,
+								"displayPicture": "img/1.jpg",
+								"self": true
+							};
+							var newChat2 = { //////newChat1是存在本地的newChat2是发出去的，唯一的不同：“self”
+								"id": storage.getItem("_id"), //当前登陆者的id
+								"name": storage.getItem("nickname"),
+								"time": date.getHours() + ":" + date.getMinutes(),
+								"massage": msg,
+								"displayPicture": "img/1.jpg",
+								"self": false
+							};
+							console.log(storage.getItem("_id"));
+							console.log("to>>>>>>>>>>>>>>>>>>>>" + $scope.id);
+							//<--socket.io
+							socket.emit("send", {
+								"id": storage.getItem("_id"),
+								"msg": newChat2,
+								"to": $scope.id
+							});
+
+							//socket.io-->
+							if(storage.getItem(storage.getItem("_id") + "localChats" + $scope.id) == "[null]" || storage.getItem(storage.getItem("_id") + "localChats" + $scope.id) == null || storage.getItem(storage.getItem("_id") + "localChats" + $scope.id) == []) {
+								var tempJsonOfLocalChats = [];
+							} else {
+								var tempJsonOfLocalChats = JSON.parse(storage.getItem(storage.getItem("_id") + "localChats" + $scope.id));
+							}
+
+							tempJsonOfLocalChats.push(newChat1);
+							//将聊天消息存入本地
+							console.log($scope.id);
+							console.log("setLocalChats>>>>>>>>>>>>");
+							storage.setItem(storage.getItem("_id") + "localChats" + $scope.id, JSON.stringify(tempJsonOfLocalChats));
+							console.log(JSON.parse(storage.getItem(storage.getItem("_id") + "localChats" + $scope.id)));
+							$scope.msg = null;
+							////////////////////////////////////////////////////////////////////
+							var tempChatsItem = JSON.parse(storage.getItem("chatsItem" + storage.getItem("_id")));
+							if(tempChatsItem == null || tempChatsItem == "[null]" || tempChatsItem == "") {
+								tempChatsItem = [];
+							}
+							//标记是否已存在条目
+							var charge = 0;
+							//标记已存在条目的位置（第几条）
+							var index = -1;
+							for(var j = 0; j < tempChatsItem.length; j++) {
+								if($scope.chatPartner.id == tempChatsItem[j].id) {
+									charge = 1;
+									index = j;
+									break;
+								}
+							}
+							if(charge == 0) { //如果chatsItem中没有该人，新增一个条目
+								tempChatsItem.push({
+									"id": $scope.chatPartner.id,
+									"name": newChat1.name,
+									"time": newChat1.time,
+									"lastMassage": newChat1.massage,
+									"displayPicture": newChat1.displayPicture
+								});
+								storage.setItem("chatsItem" + storage.getItem("_id"), JSON.stringify(tempChatsItem));
+							} else { //如果有该人，修改条目中lastMassage和time
+								tempChatsItem[index].time = newChat1.time;
+								tempChatsItem[index].lastMassage = newChat1.massage;
+								storage.setItem("chatsItem" + storage.getItem("_id"), JSON.stringify(tempChatsItem));
+							}
+							////////////////////////////////////////////////////////////////////
+
+							//刷新一次
+							$scope.chats = JSON.parse(storage.getItem(storage.getItem("_id") + "localChats" + $scope.id));
+							$ionicScrollDelegate.resize();
+							//滚动到底部
+							$ionicScrollDelegate.scrollBottom();
+							//再次选中输入框（获得焦点）
+							focus("inputMsg");
+							//将聊天消息发送出去
+							/*$http({
+								method: 'GET',
+								url: '',
+								data: {
+									id: 1111, //用户id
+									msg: newChat, //聊天内容
+									to: $scope.chatPartner.id //接受消息者的id
+								}
+							}).then(function successCallback(response) {
+								console.log(response);
+								// 请求成功执行代码
+							}, function errorCallback(response) {
+								// 请求失败执行代码
+							});*/
+							var tempJsonOfChatsItem = JSON.parse(storage.getItem("chatsItem" + storage.getItem("_id")));
+							//修改与当前联系人的chatItem
+							tempJsonOfChatsItem = aaaa(tempJsonOfChatsItem, $scope.id, newChat1);
+							storage.setItem("chatsItem" + storage.getItem("_id"), JSON.stringify(tempJsonOfChatsItem));
+							console.log(tempJsonOfChatsItem);
+						}
+					}
+					//					$rootScope.$on('$locationChangeSuccess', function() { //返回前页时，刷新前页
+					//						parent.location.reload();
+					//					});
+
+				})
+				.controller("LoginCtrl", function($scope, $stateParams, $state, $http) {
+					$scope.tel = $stateParams.tel;
+					$scope.code = $stateParams.code;
+					$scope.save = function() {
+						$http({
+							method: 'GET',
+							url: 'http://127.0.0.1:8020/testtest/1.txt',
+							data: {
+								tel: $scope.tel,
+								code: $scope.code,
+								id: 1111 //后期从本地存储中获取
+							}
+						}).then(function successCallback(response) {
+							console.log(response.data);
+							$state.go("tabs.home");
+							console.log("成功！");
+							// 请求成功执行代码
+						}, function errorCallback(response) {
+							// 请求失败执行代码
+							$state.go("tabs.login");
+							console.log("失败！");
+						});
+					}
+
+				})
+				.controller("RegisterCtrl", function($scope, $state, $http, $rootScope) {
+
+					$scope.save = function(nickname, pw) {
+						$http({
+							method: 'POST',
+							url: $rootScope.url + 'signup',
+							data: {
+								nickname: nickname,
+								pw: pw
+							}
+						}).then(function successCallback(response) {
+							console.log("访问成功！");
+							console.log(response.data);
+							var success = response.data.success;
+							if(success == true) {
+								console.log("注册成功!");
+								$state.go("tabs.namelogin");
+							} else {
+								console.log("注册失败，失败原因:" + response.data.msg);
+								$state.go("tabs.register");
+							}
+
+							// 请求成功执行代码
+						}, function errorCallback(response) {
+							// 请求失败执行代码
+							//							$state.go("tabs.register");
+							console.log("访问失败！");
+						});
+					}
+
+				})
+				.controller("NameloginCtrl", function($scope, $state, $http, $rootScope) {
+					var storage = window.localStorage;
+					var localId = storage.getItem("id");
+					console.log(localId);
+					if(localId != null && localId != undefined && localId != "") {
+						$state.go("tabs.home");
+					}
+					$scope.save = function(nickname, pw) {
+						$http({
+							method: 'POST',
+							url: $rootScope.url + 'signin',
+							data: {
+								nickname: nickname,
+								pw: pw
+							}
+						}).then(function successCallback(response) {
+							console.log("访问成功！");
+							console.log(response.data);
+							if(response.data.success == true) {
+								storage.setItem("token", response.data.msg);
+								console.log(storage.getItem("token"));
+								console.log(response.data.msg);
+								$state.go("tabs.home");
+							}
+
+							// 请求成功执行代码
+						}, function errorCallback(response) {
+							// 请求失败执行代码
+							//							$state.go("tabs.namelogin");
+							console.log("访问失败！");
+						});
+
+					}
+
+				})
+				.controller("collectCtrl", function($scope) {
+					var storage = window.localStorage;
+					if(storage.getItem("collects") != null && storage.getItem("collects") != []) {
+						$scope.collects = JSON.parse(storage.getItem("collects"));
+					} else {
+						$scope.collects = [];
+					}
+					console.log($scope.collects);
+				})
+				.controller("historyCtrl", function($scope) {
+					var storage = window.localStorage;
+					if(storage.getItem("historys") != null && storage.getItem("historys") != [] && storage.getItem("historys") != "[null]") {
+						$scope.historys = JSON.parse(storage.getItem("historys"));
+					} else {
+						$scope.historys = [];
+					}
+
+				})
+				.controller("personCtrl", function($scope) {
+
+				})
+				.directive('hideTabs', function($rootScope) {
+					return {
+						restrict: 'A',
+						link: function(scope, element, attributes) {
+							scope.$on('$ionicView.beforeEnter', function() {
+								scope.$watch(attributes.hideTabs, function(value) {
+									$rootScope.hideTabs = 'tabs-item-hide';
+								});
+							});
+							scope.$on('$ionicView.beforeLeave', function() {
+								scope.$watch(attributes.hideTabs, function(value) {
+									$rootScope.hideTabs = 'tabs-item-hide';
+								});
+								scope.$watch('$destroy', function() {
+									$rootScope.hideTabs = false;
+								})
+							});
+						}
+					};
+				})
+				.service("$receiveMsg", function($http, $interval) { //
+					this.get = function($scope) {
+						var storage = window.localStorage;
+
+						socket.on('receive', function(data) {
+							// 接受别人发的数据
+							var id = storage.getItem("_id");
+							console.log("data.to>>>>>>>>>>>>>>>>>" + data.to);
+							console.log("id>>>>>>>>>>>>>>>>>" + storage.getItem("_id"));
+							if(data.to == id) { //data.to == id
+								//获取接收到的所有聊天信息
+								$receiveChats = data.msg;
+								//								console.log($receiveChats);
+								if($receiveChats != null) {
+									//逐个存入本地：localChats+id
+									//									for(var i = 0; i < $receiveChats.length; i++) {
+									//判断是否为新聊天对象，即之前的聊天列表中是否存在
+									var tempChatsItem = JSON.parse(storage.getItem("chatsItem" + storage.getItem("_id")));
+									if(tempChatsItem == null || tempChatsItem == [] || tempChatsItem == "[null]") {
+										tempChatsItem = [];
+									}
+									//标记是否已存在条目
+									var charge = 0;
+									//标记已存在条目的位置（第几条）
+									var index = -1;
+
+									for(var j = 0; j < tempChatsItem.length; j++) {
+										if($receiveChats.id == tempChatsItem[j].id) {
+											console.log("fuckkkkkkkkk!!!!!!");
+											charge = 1;
+											index = j;
+											break;
+										}
+									}
+									if(charge == 0) { //如果chatsItem中没有该人，新增一个条目
+										tempChatsItem.push({
+											"id": $receiveChats.id,
+											"name": $receiveChats.name,
+											"time": $receiveChats.time,
+											"lastMassage": $receiveChats.massage,
+											"displayPicture": $receiveChats.displayPicture
+										});
+										storage.setItem("chatsItem" + storage.getItem("_id"), JSON.stringify(tempChatsItem));
+									} else { //如果有该人，修改条目中lastMassage和time
+										tempChatsItem[index].time = $receiveChats.time;
+										tempChatsItem[index].lastMassage = $receiveChats.massage;
+										storage.setItem("chatsItem" + storage.getItem("_id"), JSON.stringify(tempChatsItem));
+										//											console.log(tempChatsItem[index]);
+									}
+									//存入对应本地记录
+									//先通过id获取到本地记录
+									//										console.log(storage.getItem("chatsItem"));
+									console.log($receiveChats.id);
+									var tempLocalChats = [];
+									if(storage.getItem(storage.getItem("_id") + "localChats" + $receiveChats.id) != null) {
+										var tempLocalChats = JSON.parse(storage.getItem(storage.getItem("_id") + "localChats" + $receiveChats.id));
+									}
+									tempLocalChats.push($receiveChats);
+									console.log(storage.getItem("_id") + "localChats" + $receiveChats.id);
+									storage.setItem(storage.getItem("_id") + "localChats" + $receiveChats.id, JSON.stringify(tempLocalChats));
+									//									}
+									$scope.massages = JSON.parse(storage.getItem("chatsItem" + storage.getItem("_id")));
+								}
+							}
+							console.log(data);
+						});
+
+						/*$interval(function() {
+							$scope.massages = JSON.parse(storage.getItem("chatsItem"));
+							$http({
+								method: 'GET',
+								url: 'http://127.0.0.1:8020/Part-time/massageDetail.json',
+								data: {
+									id: id //用户id
+								},
+								timeout: 3000
+							}).then(function successCallback(response) {
+								//								console.log("成功");
+								//console.log(response);
+								//获取接收到的所有聊天信息
+								$receiveChats = response.data.chats;
+								//								console.log($receiveChats);
+								if($receiveChats != null) {
+									//逐个存入本地：localChats+id
+									for(var i = 0; i < $receiveChats.length; i++) {
+										//判断是否为新聊天对象，即之前的聊天列表中是否存在
+										var tempChatsItem = JSON.parse(storage.getItem("chatsItem"));
+										if(tempChatsItem == null) {
+											tempChatsItem = [];
+										}
+										//标记是否已存在条目
+										var charge = 0;
+										//标记已存在条目的位置（第几条）
+										var index = -1;
+										for(var j = 0; j < tempChatsItem.length; j++) {
+											if($receiveChats[i].id == tempChatsItem[j].id) {
+												charge = 1;
+												index = j;
+												break;
+											}
+										}
+										if(charge == 0) { //如果chatsItem中没有该人，新增一个条目
+											tempChatsItem.push({
+												"id": $receiveChats[i].id,
+												"name": $receiveChats[i].name,
+												"time": $receiveChats[i].time,
+												"lastMassage": $receiveChats[i].massage,
+												"displayPicture": $receiveChats[i].displayPicture
+											});
+											storage.setItem("chatsItem", JSON.stringify(tempChatsItem));
+										} else { //如果有该人，修改条目中lastMassage和time
+											tempChatsItem[index].time = $receiveChats[i].time;
+											tempChatsItem[index].lastMassage = $receiveChats[i].massage;
+											storage.setItem("chatsItem", JSON.stringify(tempChatsItem));
+											//											console.log(tempChatsItem[index]);
+										}
+										//存入对应本地记录
+										//先通过id获取到本地记录
+										//										console.log(storage.getItem("chatsItem"));
+										var tempLocalChats = [];
+										if(storage.getItem("localChats" + $receiveChats[i].id) != null) {
+											var tempLocalChats = JSON.parse(storage.getItem("localChats" + $receiveChats[i].id));
+										}
+										tempLocalChats.push($receiveChats[i]);
+										storage.setItem("localChats" + $receiveChats[i].id, JSON.stringify(tempLocalChats));
+									}
+									$scope.massages = JSON.parse(storage.getItem("chatsItem"));
+								}
+
+								// 请求成功执行代码
+							}, function errorCallback(response, statue) {
+								// 请求失败执行代码
+//								console.log("失败" + statue);
+							});
+						}, 2000);*/
+
+					}
+				})
+				.factory('focus', function($timeout, $window) {
+					return function(id) {
+						$timeout(function() {
+							var element = $window.document.getElementById(id);
+							if(element)
+								element.focus();
+						});
+					};
+				});
+		</script>
+		<style type="text/css">
+			a {
+				text-decoration: none;
+			}
+			
+			.col {
+				background-color: #F9FAFB;
+				padding: 5px;
+				border: 1px solid #ddd;
+				border-radius: 2px;
+				text-align: center;
+			}
+			
+			.slide {
+				height: 550px;
+			}
+			
+			.slider-slide {
+				color: #000;
+				background-color: #fff;
+				text-align: center;
+			}
+			
+			.blue {
+				background-color: white;
+			}
+			
+			.yellow {
+				background-color: white;
+			}
+			
+			.box {
+				height: 80%;
+			}
+			
+			.dropbtn {
+				background-color: white;
+				color: black;
+				padding: 13px;
+				font-size: 14px;
+				border: none;
+				cursor: pointer;
+			}
+			
+			.dropdown {
+				position: relative;
+				display: inline-block;
+			}
+			
+			.dropdown-content {
+				display: none;
+				position: absolute;
+				background-color: black;
+				min-width: 160px;
+				box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+			}
+			
+			.dropdown-content option {
+				color: black;
+				padding: 13px 14px;
+				text-decoration: none;
+				display: block;
+			}
+			
+			.dropdown:hover .dropbtn {
+				background-color: dodgerblue;
+			}
+			
+			.col {
+				background-color: white;
+				padding: 5px;
+				border: 0px solid #ddd;
+				border-radius: 2px;
+				text-align: center;
+			}
+			
+			.chats_public_img {
+				display: inline;
+				border-radius: 50%;
+				width: 40px;
+				margin-top: 20px;
+			}
+			
+			.chats_public_p {
+				display: inline;
+				background-color: deepskyblue;
+				border-radius: 10px;
+				max-width: 80%;
+				margin-top: 20px;
+				padding: 10px;
+			}
+			
+			.chats_other {
+				margin-left: 5px;
+				float: left;
+			}
+			
+			.chats_self {
+				margin-right: 5px;
+				float: right;
+			}
+		</style>
+	</head>
+
+	<body>
+		<ion-nav-bar class="bar-positive">
+			<ion-nav-back-button>
+			</ion-nav-back-button>
+		</ion-nav-bar>
+
+		<ion-nav-view></ion-nav-view>
+
+		<!--//底部菜单-->
+		<script id="templates/tabs.html" type="text/ng-template">
+			<ion-tabs class="tabs-icon-top tabs-positive" ng-class="{'tabs-item-hide':$root.hideTabs}">
+
+				<ion-tab title="首页" icon="ion-ios-home-outline" href="#/tab/home">
+					<ion-nav-view name="home-tab"></ion-nav-view>
+				</ion-tab>
+
+				<ion-tab title="消息" icon="ion-ios-chatbubble-outline" href="#/tab/massage">
+					<ion-nav-view name="massage-tab"></ion-nav-view>
+				</ion-tab>
+
+				<ion-tab title="简历" icon="ion-ios-world" ui-sref="tabs.resume">
+					<ion-nav-view name="resume-tab"></ion-nav-view>
+				</ion-tab>
+
+				<ion-tab title="个人中心" icon="ion-ios-person-outline" ui-sref="tabs.person">
+					<ion-nav-view name="person-tab"></ion-nav-view>
+				</ion-tab>
+
+			</ion-tabs>
+		</script>
+		<!--首页-->
+		<script id="templates/home.html" type="text/ng-template">
+			<ion-view view-title="首页" hide-back-button="true">
+				<ion-content class="padding">
+					<div class="bar bar-header item-input-inset">
+						<a id="" href="">
+							<i class="icon ion-location"></i>
+							<span>秦皇岛</span>
+						</a>
+						<span>&nbsp;</span>
+						<!--<label class="item-input-wrapper">
+						   <i class="icon ion-ios-search placeholder-icon"></i>
+						   <input type="search" placeholder="搜索" style="width:100px;"><button class="">搜索</button>
+						</label>-->
+						<input type="search" ng-model="keyword" placeholder="  请输入关键词" style="background-color: #EFEFF4;height:25px;width:220px;margin-left:20px;border-radius: 5px;">&nbsp;&nbsp;<button style="color:#EC971F;" ng-click="search(keyword)" class="button button-clear button-primary">搜索</button>
+					</div>
+					<ion-slide-box does-continue="true" slide-interval="4000" auto-play="true">
+						<ion-slide>
+							<img src="https://img03.51jobcdn.com/im/images/2018/bj/puhui0906_7249wh.gif" style=";" class="" />
+						</ion-slide>
+						<ion-slide>
+							<img src="" style="height: 150px;" class="" />
+						</ion-slide>
+						<ion-slide>
+							<img src="" style="height: 150px;" class="" />
+						</ion-slide>
+					</ion-slide-box>
+					<div class="row">
+						<a class="col button button-calm" href="#">
+							<p><i class="icon ion-search"></i></p>兼职搜索</a>
+						<a class="col button button-balanced" href="#/tab/record">
+							<p><i class="icon ion-android-drafts"></i></p>申请记录</a>
+						<a class="col button button-energized" href="#/tab/raiders">
+							<p><i class="icon ion-ios-bookmarks-outline"></i></p>兼职攻略</a>
+					</div>
+					<ion-list>
+						<ion-item href="#" ng-repeat="j in jobs">
+							<div class="row">
+								<a class="col col-75 ">
+									<h2>{{j.name}}</h2>
+									<p>
+										<div>
+											<font color="red"><b>{{j.salaryMin+'-'+j.salaryMax}}</b></font>
+											<font color="grey">{{j.add}}</font>
+										</div>
+									</p>
+									<p>
+										<i class="icon ion-pin"></i>
+										<font color="darkgray">{{j.company}}</font>&nbsp;|&nbsp;
+										<font color="darkgray">海港区</font>
+									</p>
+								</a>
+								<div class="col item-button-right">
+									<a href="#/tab/jobinformation/{{j}}" class="button button-balanced button-outline">查看</a>
+									<!--跳转到职位详细-->
+								</div>
+							</div>
+						</ion-item>
+
+					</ion-list>
+					</ion-list>
+				</ion-content>
+			</ion-view>
+		</script>
+		<!--
+        	申请记录
+        -->
+		<script id="templates/record.html" type="text/ng-template">
+			<ion-view view-title="申请记录">
+				<ion-content class="padding">
+					<p>&nbsp;</p>
+					<div class="item item-divider" ng-repeat="r in records">
+						<p>
+							<font size="4"><strong>{{r.company.name}}</strong></font>
+						</p>
+						<p>
+							<font size="2">{{r.job.name}}</font>
+							<font color="red" size="3">{{r.job.salaryMin+"-"+r.salaryMax}}元</font>
+						</p>
+						<p>
+							<font size="2">{{r.job.location}}</font>
+							<p>
+					</div>
+
+				</ion-content>
+			</ion-view>
+		</script>
+		<!--
+    	兼职攻略
+    -->
+		<script id="templates/raiders.html" type="text/ng-template">
+			<ion-view view-title="兼职攻略" hide-tabs="true">
+				<ion-content class="padding">
+					切记：外面的世界很复杂，何事得留个心眼。 不可起贪心，天上不会掉馅饼，地上没有轻松白来的高薪，凡事都会有代价，一步一个脚印，慢慢来！ 　　1、收取中介费 　　中介费本是个合理的收费，利用信息挣钱是合理合法的，但一些中介去是只收钱，不介绍工作，或者找个“托”的单位，让求职者跑去，却被以各种理由拒绝。所以，对收中介费的工作，一定要真正上班了，并且上班了解单位的业务是正当、正常的业务之后，再交中介费。 　　2、收押金、身份证、学生证等钱物 　　这类公司通常招聘一些看起来适合大学生的低技术岗位，如：文秘、打字员、助理等，经过简单的面试就向大学生宣布：你被录用了，待遇也不错。你心里正庆幸自己的运气好，他那边就以各种理由，开始要求收一定的押金，如上班的保证金、置装费、建档费，甚至要求交身份证和学生证，很难保证他们会拿这些证件做什么。 　　而一旦交了一次钱之后，各种名目的费用就开始了，为了把之前的钱收回来，很多人欲罢不能，结果钱被骗得更多。 　　3、收费培训 　　这类骗子在面试学生后，通常要求参加公司培训与考试，交一笔钱之后，有的会进行一些培训，并发培训资料、发光盘，让背资料，考试，但考试内容却与资料无任何关系。有的甚至根本不培训，收了钱就的失踪了。 　　正规的企业即便有岗前培训，也都是免费的，劳动合同法对于企业培训、培训费及服务期都有规定。 　　4、预收货款 　　有些公司打着招聘销售员、促销员的名义，在学校招聘，招聘后，拿一些产品比如洗发水、文具用品等等给学生，要求做校园推广，但要学生先交一部分货款或货物押金。这些产品常常是伪劣产品，并且在交了钱之后，这些公司就消失了，很多大一新生感觉很新鲜，却不知道已经上当了。 　　也有的公司要求学生制作一些简单的工艺品，如十字绣、编织包袋、手工艺花等，要求买半成品回去加工，等做好了之后，却发现收贷的公司不见了。 　　对待这样的公司，要坚持先销售，再给钱，不然宁可不做，也不能被骗。 　　5、网上兼职骗信息费、加盟费 　　有的网站上有兼职信息，要求兼职人员有一定的网络应用能力，先把他们网站的招聘广告发到五个网站上，然后把链接发给他们，等你发了五个链接，并告之他们之后，他们要求你给他们发信息，他们好把所谓的“工号”发给你，你一发信息，就被收几元的信息费，然后没有下文了，你所发的链接成了他们的免费广告，去骗更多的人。 　　有的网站不断宣传他们的产品如何好销，骗加盟费，由于加盟费极低，学生很容易上当，而一旦交了一次钱之后，各种名目的费用就开始了，为了把之前的钱收回来，很多人也是欲罢不能，结果钱被骗得更多。
+				</ion-content>
+			</ion-view>
+		</script>
+		<!--搜索页 待定-->
+		<!--<script id="templates/searchModal.html" type="text/ng-template">
+			<ion-model-view>
+				<ion-header-bar class="bar bar-header" style="background-color:white;">
+					<h1>
+						<label class="item-input-wrapper" style="margin-top:3px;">
+						   <i class="icon ion-ios-search placeholder-icon"></i>
+						   <input type="search" style="background-color: #EFEFF4;height:25px;width:300px;margin-left:20px;border-radius: 5px;">
+						</label>
+					</h1>
+					<button class="button button-clear button-primary" style="color:#EC971F;" ng-click="modal.hide()">取消</button>
+				</ion-header-bar>
+				<ion-content>
+					<div style="min-height:800px;width:100%;background-color: white;">
+						<div class="list" style="margin-top:10px;">
+
+							<a class="item item-icon-left" href="#">
+								<i class="icon ion-ios-clock-outline"></i> 搜索记录
+							</a>
+						</div>
+						<div class="content">
+
+							<ul class="list">
+
+								<li class="item">
+									Battletoads
+								</li>
+								<li class="item">
+									Contra
+								</li>
+								<li class="item">
+									Duck Tales
+								</li>
+								<li class="item">
+									Mega Man
+								</li>
+								<li class="item">
+									Metroid
+								</li>
+						</div>
+					</div>
+				</ion-content>
+			</ion-model-view>
+		</script>-->
+		<!--  消息  -->
+		<script id="templates/massage.html" type="text/ng-template">
+			<ion-view view-title="消息">
+				<ion-content>
+					<div class="list">
+						<!--<p>今天</p>-->
+						<a class="item item-avatar" href="#/tab/massage_detail/{{m.id}}/null" ng-repeat="m in massages">
+							<!--<img src="{{m.displayPicture}}">-->
+							<h2><contact>{{m.name}}</contact><time style="float:right;margin-right:20px;font-size:10px;color:gray;">{{m.time}}</time></h2>
+							<p>{{m.lastMassage}}</p>
+						</a>
+
+					</div>
+				</ion-content>
+			</ion-view>
+		</script>
+
+		<!--聊天页面-->
+		<script id="templates/massage_detail.html" type="text/ng-template">
+			<ion-view view-title="{{chatPartner.name}}" hide-tabs="true">
+				<ion-content>
+					<div id="a" class="scroll">
+						<div style="width: 100%;float:left;" ng-repeat="c in chats track by $index">
+							<!--<img src="{{c.displayPicture}}" class="chats_public_img {{c.self?'chats_self':'chats_other'}}">-->
+							<p class="chats_public_p {{c.self?'chats_self':'chats_other'}}">{{c.massage}}</p>
+						</div>
+						<!--<div style="width: 100%;float:left;">
+							<img src="img/1.jpg" style="display:inline;border-radius: 50%;width:40px;margin-top:20px;margin-right:5px;float: right;">
+							<p style="display:inline;background-color:deepskyblue;border-radius:10px;max-width:80%;margin-top:20px;padding:10px;margin-right:5px;float: right;">essggssse</p>
+
+						</div>-->
+						<div style="width:100%;height:60px;background-color: white;float:left;"></div>
+					</div>
+
+				</ion-content>
+				<ion-footer>
+					<div class="list" style="position: fixed;bottom: 0px;width: 100%;">
+
+						<div class="item item-input-inset">
+							<label class="item-input-wrapper">
+            						<input type="text" ng-model="msg" id="msgInput">
+          						</label>
+							<button class="button button-calm button-small" ng-click="sendMsg(msg)">
+            						发送
+          					</button>
+						</div>
+
+					</div>
+				</ion-footer>
+			</ion-view>
+		</script>
+
+		<!--简历-->
+		<script id="templates/resume.html" type="text/ng-template">
+			<ion-view view-title="我的简历">
+				<ion-content class="padding">
+					<p>&nbsp;</p>
+					<p align=center>
+						<font size="6">您还没有简历个人简历！</font>
+					</p>
+					<p>&nbsp;</p>
+					<p align=center>
+						<font size="3">你是应届生？技工？销售？客服？厨师？</font>
+					</p>
+					<p>&nbsp;</p>
+					<p align=center>
+						<font size="3">想找工作？做兼职？当学徒？找实习？</font>
+					</p>
+					<p>&nbsp;</p>
+					<p align=center>
+						<font size="3">无论选择哪一种，赶集招聘都能帮你完成心愿！</font>
+					</p>
+					<p>&nbsp;</p>
+					<p>
+						<a class="button button-block button-positive" href="#/tab/create1">创建简历</a>
+					</p>
+				</ion-content>
+			</ion-view>
+		</script>
+
+		<!--创建简历内容-->
+		<script id="templates/create1.html" type="text/ng-template">
+			<ion-view view-title="创建简历">
+				<ion-content class="padding">
+					<div ng-controller="SlideController">
+						<ion-slide-box show-pager="false">
+							<ion-slide>
+								<div class="box blue">
+									<p>&nbsp;</p>
+									<p align=center>
+										<font size="5"><strong>Hi，简单介绍一下自己</strong></font>
+									</p>
+									<p align=center>
+										<font size="2">让公司快速了解你</font>
+									</p>
+									<p align=center>
+										<font size="3">-头像-</font>
+									</p>
+									<p align=right class="">
+										<!--<a href="" class="file">选择文件-->
+										<input type="file" name="" id="">
+										<!--</a>-->
+									</p>
+									<!--<img src="../../test2/imag/1.jpg"height="50" width="100">-->
+									<p align=center>
+										<font size="3">-姓名-</font>
+									</p>
+									<p align=center>
+										<font size="3"><input type="text" size="7" placeholder="请输入姓名" ng-model="name"> </font>
+									</p>
+									<p align=center>
+										<font size="3">-性别-</font>
+									</p>
+									<p align=center>
+										<input type="radio" value="0" name="gender" ng-model="sex">男</input>&nbsp;&nbsp;&nbsp;&nbsp;
+										<input type="radio" value="1" name="gender" ng-model="sex">女</input>
+									</p>
+									<p align=center>
+										<font size="3">-出生年份-</font>
+									</p>
+									<p>
+										<div class="dropdown">
+											<select class="dropbtn" ng-model="year">下拉菜单</button>
+												<div class="dropdown-content">
+													<option>1990</option>
+													<option>1991</option>
+													<option>1992</option>
+													<option>1993</option>
+													<option>1994</option>
+													<option>1995</option>
+													<option>1996</option>
+													<option>1997</option>
+												</div>
+											</select>
+										</div>
+									</p>
+									<p align=center>
+										<font size="3">-学校-</font>
+									</p>
+									<p align=center>
+										<font size="10"><input type="text" size="7" placeholder="请输入地点" selected="school"> </font>
+									</p>
+								</div>
+							</ion-slide>
+							<ion-slide>
+								<p>&nbsp;</p>
+								<p align=center>
+									<font size="5"><strong>你对工作有什么期待</strong></font>
+								</p>
+								<p align=center>
+									<font size="2">帮助你快速匹配好工作</font>
+								</p>
+								<p>&nbsp;</p>
+								<p align=center>
+									<font size="3">-专业-</font>
+								</p>
+								<p align=center>
+									<font size="10"><input type="text" size="7" placeholder="请输入专业" selected="school"> </font>
+								</p>
+								<p align=center>
+									<font size="3">-邮箱-</font>
+								</p>
+								<p align=center>
+									<font size="10"><input type="text" size="7" placeholder="请输入邮箱" selected="email"> </font>
+								</p>
+								<p align=center>
+									<font size="3">-联系电话-</font>
+								</p>
+								<p align=center>
+									<font size="10"><input type="text" size="7" placeholder="请输入电话" selected="tel"> </font>
+								</p>
+								<p>&nbsp;</p>
+								<p>
+									<a class="button button-block button-positive" href="#/tab/home" ng-click="save()">提交</a>
+								</p>
+							</ion-slide>
+						</ion-slide-box>
+					</div>
+				</ion-content>
+			</ion-view>
+		</script>
+
+		<!--个人中心-->
+		<script id="templates/person.html" type="text/ng-template">
+			<ion-view view-title="个人中心">
+				<ion-content class="padding">
+					<div class="list card">
+						<div class="item item-avatar ">
+							<img src="../../testtest/img/2.jpg">
+							<b><font size="5">xiongsimin</font></b>
+						</div>
+					</div>
+					<div>
+						<div class="row">
+							<div class="col" style="text-align:center">
+								<div class="col-demo">
+									<h1>2</h1>投递记录</div>
+							</div>
+							<div class="col" style="text-align:center">
+								<div class="col-demo">
+									<h1>1</h1>面试邀请</div>
+							</div>
+						</div>
+						<p>
+							<a class="button icon icon-right ion-chevron-right" href="#/tab/center"><i class="icon ion-clipboard"></i>&nbsp;&nbsp;我的信息<span style="MARGIN-left:210px;"></span></a>
+						</p>
+						<p>
+							<a class="button icon icon-right ion-chevron-right" href="#/tab/find"><i class="icon ion-android-contacts"></i>&nbsp;&nbsp;我要招人<span style="MARGIN-left:210px;"></span></a>
+						</p>
+						<p>
+							<a class="button icon icon-right ion-chevron-right" href="#/tab/collect"><i class="icon ion-ios-heart"></i>&nbsp;&nbsp;我的收藏<span style="MARGIN-left:210px;"></span></a>
+						</p>
+						<p>
+							<a class="button icon icon-right ion-chevron-right" href="#/tab/history"><i class="icon ion-android-textsms"></i>&nbsp;&nbsp;浏览历史<span style="MARGIN-left:210px;"></span></a>
+						</p>
+
+						<p>&nbsp;</p>
+						<p>
+							<a class="button button-block button-positive" href="">退出登录</a>
+						</p>
+					</div>
+				</ion-content>
+			</ion-view>
+		</script>
+
+		<!--         我要招人                -->
+		<script id="templates/find.html" type="text/ng-template">
+			<ion-view view-title="我要招人">
+				<ion-content class="padding">
+					<br>
+					<div class="list">
+						<a href="#/tab/manages" class="item item-icon-left item-icon-right">
+							<i class="icon ion-clipboard"></i>管理简历
+							<i class="icon ion-chevron-right"></i>
+						</a>
+						<a href="#/tab/managework" class="item item-icon-left item-icon-right">
+							<i class="icon ion-bookmark "></i>管理职位
+							<i class="icon ion-chevron-right"></i>
+						</a>
+						<a href="#/tab/managecom" class="item item-icon-left item-icon-right">
+							<i class="icon ion-home"></i>查看公司信息
+							<i class="icon ion-chevron-right"></i>
+						</a>
+						<a href="#/tab/managecon" class="item item-icon-left item-icon-right">
+							<i class="icon ion-ribbon-b"></i>招聘资质认证
+							<i class="icon ion-chevron-right"></i>
+						</a>
+					</div>
+				</ion-content>
+			</ion-view>
+		</script>
+		<script id="templates/manages.html" type="text/ng-template">
+			<ion-view view-title="管理简历">
+				<ion-content class="padding">
+					<div class="list">
+						<a href="#/tab/manage_detail" class="item item-avatar">
+							<img src="" />
+							<h2>{{item.applicant_id.Application_name}}</h2>
+							<p>{{item.applicant_id.Expection_job}}</p>
+						</a>
+					</div>
+					</div>
+				</ion-content>
+			</ion-view>
+		</script>
+		<script id="templates/managework.html" type="text/ng-template">
+			<ion-view view-title="管理职位">
+				<ion-content class="padding">
+					<ion-list>
+						<ion-item class="item-divider">
+							<a href="#/tab/employee" style="text-decoration:none;color:#000000 ;">
+								<div>
+									{{item.Job_name}}
+									<p>
+										<font color="darkgray">
+											需求 {{item.Amount}} 人
+										</font>
+										&nbsp;|&nbsp;
+										<font color="darkgray">
+											已招聘 {{}} 人
+										</font>
+									</p>
+								</div>
+							</a>
+							<ion-list>
+								<ion-item class="item-avatar">
+									<img ng-src="{{employee.Imag}}">
+									<h2>{{employee.Name}}</h2>
+									<p>{{employee.Tel}}</p>
+								</ion-item>
+							</ion-list>
+						</ion-item>
+					</ion-list>
+				</ion-content>
+			</ion-view>
+		</script>
+		<script id="templates/managecom.html" type="text/ng-template">
+			<ion-view view-title="查看公司信息">
+				<ion-content class="padding">
+					<br>
+					<div class="list">
+						<label class="item item-input">
+							<span class="input-label">公司名称</span>
+							<input type="text" name="" id="" value="" placeholder="与营业执照一致，2-30个字" />
+						</label>
+					</div>
+					<div class="list">
+						<label class="item item-input" ng-controller="asintend">
+							<span class="input-label">行业</span>
+							<input type="text" name="" id="" value="" ng-click="show()" />
+						</label>
+						<label class="item item-input" ng-controller="askind">
+							<span class="input-label">类型</span>
+							<input type="text" name="" id="" value="" ng-click="show()" />
+						</label>
+						<label class="item item-input" ng-controller="askind">
+							<span class="input-label">规模</span>
+							<input type="text" name="" id="" value="" ng-click="show()" />
+						</label>
+					</div>
+					<div class="list">
+						<label class="item item-input">
+							<span class="input-label">城市</span>
+							<input type="text" name="" id="" value="" placeholder="输入" />
+						</label>
+						<label class="item item-input">
+							<span class="input-label">公司简介</span>
+							<textarea rows="5" name="" id="" value="" placeholder="公司简介" ></textarea>
+						</label>
+					</div>
+					<br>
+					<p>
+						<a class="button button-block  button-positive" href="#/tab/finds">确认发布</a>
+					</p>
+					</div>
+				</ion-content>
+			</ion-view>
+		</script>
+		<script id="templates/managecon.html" type="text/ng-template">
+			<ion-view view-title="招聘资质认证">
+				<ion-content class="padding">
+					<br>
+					<div class="list">
+						<label class="item item-input item-stacked-label">
+        			<span>请填写所在地址</span>
+        			<input class="" type="text" id="" value="" />
+        		</label>
+						<label class="item item-input item-stacked-label">
+        			<span>请上传经营证件</span>
+        			<div class="">
+        				<input type="file" accept="image/*" />
+        			</div>
+        		</label>
+						<br>
+						<p>
+							<a class="button button-block  button-positive" href="#/tab/finds">提交</a>
+						</p>
+					</div>
+				</ion-content>
+			</ion-view>
+		</script>
+		<script id="templates/employee.html" type="text/ng-template">
+			<ion-view view-title="发布职位" hide-nav-bar="false">
+				<ion-content class="padding">
+
+					<div class="list">
+						<label class="item item-input">
+				          <span class="input-label">职位：</span>
+				          <input type="text"  placeholder="职位名">
+				        </label>
+						<label class="item item-input">
+				          <span class="input-label" >职位补充：</span>
+				          <input type="text" placeholder="详细描述">
+				        </label>
+						<label class="item item-input">
+				          <span class="input-label">职位数量：</span>
+				          <input type="number"  placeholder="需求数量">
+				        </label>
+						<label class="item item-input">
+				          <span class="input-label">工资：</span>
+				          <p>
+				          	<input type="number"  placeholder="工资上限">
+				          	-
+				          	<input type="number"  placeholder="工资下限">
+				          </p>
+				          
+				        </label>
+						<label class="item item-input">
+				          <span class="input-label">工作城市：</span>
+				          <input type="text"   placeholder="详细地点">
+				        </label>
+						<label class="item item-input">
+				          <span class="input-label">职位描述：</span>
+				          <textarea type="text" rows="5" ng-minlength="1" placeholder="对该职位的额外需求"></textarea>
+				        </label>
+					</div>
+					<div class="padding">
+						<button class="button button-block button-positive" href="#/">发布</button>
+					</div>
+
+				</ion-content>
+			</ion-view>
+		</script>
+		<script id="templates/manages_detail.html" type="text/ng-template">
+			<ion-view view-title="简历详情">
+				<ion-content class="padding">
+					<div class="list list-inset">
+						<center>简历2</center>
+						<div class="list">
+							<div class="item ">
+								<center>
+									<img class="" src="dsad" style="border-radius:50px;height: 50px;weight:50px;" />
+								</center>
+								<label class="item-input">
+						      		<span class="input-label">姓名</span>
+						      		<input type="text" maxlength="8" disabled="disabled" value=""/>
+						      	</label>
+								<label class="item-input item-select">
+										  <div class="input-label">
+										  	性别
+										  </div>
+										  <select name="sex" disabled="disabled">
+										  	<option value="man" selected="selected">男</option>
+										  	<option value="feman" >女</option>
+										  </select>
+										</label>
+								<label class="item-input">
+											<div class="input-label">
+												出生日期
+											</div>
+											<input type="date" name="" id="" value=""  disabled="disabled"/>
+										</label>
+							</div>
+							<div class="item">
+								<label class="item-input item-select">
+				      				<div class="input-label">
+				      					学历
+				      				</div>
+				      				<select name="graduate" disabled="disabled">
+				      					<option value="1">硕士</option>
+				      					<option value="2">本科</option>
+				      					<option value="3">大专</option>
+				      					<option value="4">中专</option>
+				      				</select>
+				      			</label>
+								<label class="item-input">
+				      				<div class="input-label">
+				      					毕业学校
+				      				</div>
+				      				<input type="text" name="school" disabled="disabled"/>
+				      			</label>
+							</div>
+							<div class="item">
+								<label class="item-input">
+				      				<div class="input-label">
+				      					工作经验
+				      				</div>
+				      				<select name="">
+				      					<option value="">无经验</option>
+				      				</select>
+				      			</label>
+								<label class="item-input">
+				      				<div class="input-label">
+				      					求职意向
+				      				</div>
+				      				<a href="">请选择</a>
+				      			</label>
+							</div>
+							<div class="item">
+								<label class="item-input">
+				      				<div class="input-label">
+				      					联系电话
+				      				</div>
+				      				<input type="number" max="11" name="phone" disabled="disabled"/>
+				      			</label>
+								<label class="item-input">
+				      				<div class="input-label">
+				      					邮箱
+				      				</div>
+				      				<input type="email" name="email" disabled="disabled"/>
+				      			</label>
+							</div>
+						</div>
+						<a class="button button-block button-outline button-positive">接受</a>
+						<a class="button button-block button-outline button-assertive">拒绝</a>
+				</ion-content>
+			</ion-view>
+		</script>
+		<!--简历投递-->
+		<script id="templates/charts.html" type="text/ng-template">
+			<ion-view title="Contact">
+				<ion-content>
+					<ion-slide-box active-slide="myActiveSlide" show-pager="false">
+						<ion-slide>
+							<div class="list list-inset">
+								<center>简历1</center>
+								<a class="button button-block button-outline button-positive">提交 简历名称</a>
+							</div>
+						</ion-slide>
+						<ion-slide>
+							<div class="list list-inset">
+								<center>简历2</center>
+								<div class="list">
+									<div class="item ">
+										<center>
+											<img class="" src="dsad" style="border-radius:50px;height: 50px;weight:50px;" />
+										</center>
+										<label class="item-input">
+						      		<span class="input-label">姓名</span>
+						      		<input type="text" maxlength="8" disabled="disabled" value=""/>
+						      	</label>
+										<label class="item-input item-select">
+										  <div class="input-label">
+										  	性别
+										  </div>
+										  <select name="sex" disabled="disabled">
+										  	<option value="man" selected="selected">男</option>
+										  	<option value="feman" >女</option>
+										  </select>
+										</label>
+										<label class="item-input">
+											<div class="input-label">
+												出生日期
+											</div>
+											<input type="date" name="" id="" value=""  disabled="disabled"/>
+										</label>
+									</div>
+									<div class="item">
+										<label class="item-input item-select">
+				      				<div class="input-label">
+				      					学历
+				      				</div>
+				      				<select name="graduate" disabled="disabled">
+				      					<option value="1">硕士</option>
+				      					<option value="2">本科</option>
+				      					<option value="3">大专</option>
+				      					<option value="4">中专</option>
+				      				</select>
+				      			</label>
+										<label class="item-input">
+				      				<div class="input-label">
+				      					毕业学校
+				      				</div>
+				      				<input type="text" name="school" disabled="disabled"/>
+				      			</label>
+									</div>
+									<div class="item">
+										<label class="item-input">
+				      				<div class="input-label">
+				      					工作经验
+				      				</div>
+				      				<select name="">
+				      					<option value="">无经验</option>
+				      				</select>
+				      			</label>
+										<label class="item-input">
+				      				<div class="input-label">
+				      					求职意向
+				      				</div>
+				      				<a href="">请选择</a>
+				      			</label>
+									</div>
+									<div class="item">
+										<label class="item-input">
+				      				<div class="input-label">
+				      					联系电话
+				      				</div>
+				      				<input type="number" max="11" name="phone" disabled="disabled"/>
+				      			</label>
+										<label class="item-input">
+				      				<div class="input-label">
+				      					邮箱
+				      				</div>
+				      				<input type="email" name="email" disabled="disabled"/>
+				      			</label>
+									</div>
+								</div>
+								<a class="button button-block button-outline button-positive">提交 简历名称</a>
+							</div>
+						</ion-slide>
+						<ion-slide>
+							<div class="list list-inset">
+								<center>
+									<font color="orange">新简历</font>
+								</center>
+
+								<a class="button button-block button-outline button-positive">创建并提交</a>
+							</div>
+						</ion-slide>
+					</ion-slide-box>
+
+				</ion-content>
+			</ion-view>
+		</script>
+		<!--         我的收藏                    -->
+		<script id="templates/collect.html" type="text/ng-template">
+			<ion-view title="我的收藏">
+				<ion-content class="padding">
+					<ion-list>
+						<ion-item href="#" ng-repeat="c in collects">
+							<div class="row">
+								<a class="col col-75 ">
+									<h2>{{c.name}}</h2>
+									<p>
+										<div>
+											<font color="red"><b>{{c.salaryMin+'-'+c.salaryMax}}</b></font>
+											<font color="grey">{{c.add}}</font>
+										</div>
+									</p>
+									<p>
+										<i class="icon ion-pin"></i>
+										<font color="darkgray">{{c.company}}</font>&nbsp;|&nbsp;
+										<font color="darkgray">海港区</font>
+									</p>
+								</a>
+								<div class="col item-button-right">
+									<a href="#/tab/jobinformation/{{c}}" class="button button-balanced button-outline">查看</a>
+									<!--跳转到职位详细-->
+								</div>
+							</div>
+						</ion-item>
+
+					</ion-list>
+				</ion-content>
+			</ion-view>
+		</script>
+
+		<!--         浏览历史                  -->
+		<script id="templates/history.html" type="text/ng-template">
+			<ion-view title="浏览历史">
+				<ion-content class="padding">
+
+					<ion-list>
+						<ion-item href="#" ng-repeat="h in historys">
+							<div class="row">
+								<a class="col col-75 ">
+									<h2>{{h.name}}</h2>
+									<p>
+										<div>
+											<font color="red"><b>{{h.salaryMin+'-'+h.salaryMax}}</b></font>
+											<font color="grey">{{h.add}}</font>
+										</div>
+									</p>
+									<p>
+										<i class="icon ion-pin"></i>
+										<font color="darkgray">{{h.company}}</font>&nbsp;|&nbsp;
+										<font color="darkgray">海港区</font>
+									</p>
+								</a>
+								<div class="col item-button-right">
+									<a href="#/tab/jobinformation/{{h}}" class="button button-balanced button-outline">查看</a>
+									<!--跳转到职位详细-->
+								</div>
+							</div>
+						</ion-item>
+
+					</ion-list>
+				</ion-content>
+			</ion-view>
+		</script>
+
+		<script id="templates/center.html" type="text/ng-template">
+			<ion-view view-title="我的信息">
+				<ion-content class="padding">
+					<p>
+						基本资料
+
+					</p>
+					<p>
+						<a class="button icon icon-right ion-chevron-right" href="#/tab/facts">头像<span style="MARGIN-left:180px;"><img src="../../test2/imag/1.jpg" width="100" height="60" /> </span></a>
+					</p>
+					<!--<div class="list">
+						<div class="item item-button-right " style="border: 0px;background: whitesmoke;width:100%;">
+							<span style="float:LEFT;">昵称</span>
+							<a class="button" href="#/tab/nickname/{{center.Nickname}}">
+								{{center.Nickname}}&nbsp;&nbsp;
+								<i class="icon ion-chevron-right"></i>
+							</a>
+						</div>
+					</div>-->
+					<p>
+						<a style="width:100%;" class="button icon icon-right ion-chevron-right" href="#/tab/nickname/{{center.Nickname}}"><span style="float:LEFT;">昵称</span><span style="float:right;MARGIN-right:10px;">{{center.Nickname}}</span></a>
+					</p>
+					<p>
+						<a style="width:100%;" class="button icon icon-right ion-chevron-right" href="#/tab/birthday"><span style="float:LEFT;">生日</span><span style="float:right;MARGIN-right:10px;">{{center.Birthday}}</span></a>
+					</p>
+					<p>
+						<a style="width:100%;" class="button icon icon-right ion-chevron-right" href="#/tab/sex"><span style="float:LEFT;">性别</span><span style="float:right;MARGIN-right:10px;">{{center.Sex}}</span></a>
+					</p>
+					<p>
+						<a style="width:100%;" class="button icon icon-right ion-chevron-right" href="#/tab/phone/{{center.Phone}}"><span style="float:LEFT;">手机</span><span style="float:right;MARGIN-right:10px;">{{center.Phone}}</span></a>
+					</p>
+					<p>
+						<a style="width:100%;" class="button icon icon-right ion-chevron-right" href="#/tab/name/{{center.Name}}"><span style="float:LEFT;">用户名</span><span style="float:right;MARGIN-right:10px;">{{center.Name}}</span></a>
+					</p>
+					</div>
+				</ion-content>
+			</ion-view>
+		</script>
+		<!--         姓名                    -->
+		<script id="templates/nickname.html" type="text/ng-template">
+			<ion-view view-title="修改昵称">
+				<ion-content class="padding">
+					<div class="content has-header">
+						<div class="list">
+							<label class="item item-input">
+			          <input type="text" placeholder="" ng-model="name" value="{{name}}"> <!--ng-model="name"-->
+			        </label>
+						</div>
+						20个字符以内，仅可使用汉子、字母、下划线
+						<div class="padding">
+							<a class="button button-block button-positive" href="#/tab/home" ng-click="save()">提交</a>
+						</div>
+					</div>
+				</ion-content>
+			</ion-view>
+		</script>
+		<!--         生日                   -->
+		<script id="templates/birthday.html" type="text/ng-template">
+			<ion-view view-title="出生年月">
+				<ion-content class="padding">
+					<div class="bar bar-header">
+						<div class="h1 title">请选择</div>
+					</div>
+
+					<div class="content-wrapper">
+						<div class="content has-header">
+
+							<div class="list">
+
+								<div class="item item-input item-select">
+									<div class="input-label">
+										年份
+									</div>
+									<select ng-model="year">
+										<option value="1980">1980</option>
+										<option value="1981">1981</option>
+										<option value="1982">1982</option>
+										<option value="1983">1983</option>
+										<option value="1984">1984</option>
+										<option value="1985">1985</option>
+										<option value="1986">1986</option>
+										<option value="1987">1987</option>
+										<option value="1988">1988</option>
+										<option value="1989">1989</option>
+										<option value="1990">1990</option>
+										<option value="1991">1991</option>
+									</select>
+								</div>
+
+								<div class="item item-input item-select">
+									<div class="input-label">
+										月份
+									</div>
+									<select ng-model="month">
+										<option value="1">1</option>
+										<option value="2">2</option>
+										<option value="3">3</option>
+										<option value="4">4</option>
+										<option value="5">5</option>
+										<option value="6">6</option>
+										<option value="7">7</option>
+										<option value="8">8</option>
+										<option value="9">9</option>
+										<option value="10">10</option>
+										<option value="11">11</option>
+										<option value="12">12</option>
+
+									</select>
+								</div>
+
+								<div class="item item-input item-select">
+									<div class="input-label">
+										日
+									</div>
+									<select ng-model="day">
+										<option value="1">1</option>
+										<option value="2">2</option>
+										<option value="3">3</option>
+										<option value="4">4</option>
+										<option value="5">5</option>
+										<option value="6">6</option>
+										<option value="7">7</option>
+										<option value="8">8</option>
+										<option value="9">9</option>
+										<option value="10">10</option>
+										<option value="11">11</option>
+										<option value="12">12</option>
+										<option value="13">13</option>
+										<option value="14">14</option>
+										<option value="15">15</option>
+										<option value="16">16</option>
+										<option value="17">17</option>
+										<option value="18">18</option>
+										<option value="19">19</option>
+										<option value="20">20</option>
+										<option value="21">21</option>
+										<option value="22">22</option>
+										<option value="23">23</option>
+										<option value="24">24</option>
+										<option value="25">25</option>
+										<option value="26">26</option>
+										<option value="27">27</option>
+										<option value="28">28</option>
+										<option value="29">29</option>
+										<option value="30">30</option>
+										<option value="31">31</option>
+
+									</select>
+								</div>
+								<div class="padding">
+									<a class="button button-block button-positive" href="#/tab/home" ng-click="save()">提交</a>
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</ion-content>
+			</ion-view>
+		</script>
+		<!--         性别                 -->
+		<script id="templates/sex.html" type="text/ng-template">
+			<ion-view view-title="性别">
+				<ion-content class="padding">
+					<div class="content has-header">
+
+						<div class="list">
+							<label class="item item-radio">
+       			    <input type="radio" name="group" value="男" checked="checked" ng-model="sex">
+         				  <div class="radio-content">
+          				  <div class="item-content">
+         						   男
+        				    </div>
+        					    <i class="radio-icon ion-checkmark"></i>
+        				  </div>
+       				</label>
+						</div>
+						<div class="list">
+							<label class="item item-radio">
+       			    <input type="radio" name="group" value="女" checked="checked" ng-model="sex">
+         				  <div class="radio-content">
+          				  <div class="item-content">
+         						   女
+        				    </div>
+        					    <i class="radio-icon ion-checkmark"></i>
+        				  </div>
+       				</label>
+						</div>
+						<div class="padding">
+							<a class="button button-block button-positive" href="#/tab/home" ng-click="save()">>提交</a>
+						</div>
+
+					</div>
+				</ion-content>
+			</ion-view>
+		</script>
+
+		<!--         手机                    -->
+		<script id="templates/phone.html" type="text/ng-template">
+			<ion-view view-title="手机">
+				<ion-content class="padding">
+					<div class="content has-header">
+						<div class="list">
+							请输入手机号：
+							<label class="item item-input">
+			          <input type="text" placeholder="" ng-model="phone" value="{{phone}}">
+			        </label>
+						</div>
+						<div class="padding">
+							<a class="button button-block button-positive" href="#/tab/home" ng-click="save()">提交</a>
+						</div>
+					</div>
+				</ion-content>
+			</ion-view>
+		</script>
+
+		<!--         用户名                   -->
+		<script id="templates/name.html" type="text/ng-template">
+			<ion-view view-title="用户名">
+				<ion-content class="padding">
+					<div class="content has-header">
+						<div class="list">
+							<label class="item item-input">
+			          <input type="text" placeholder="" ng-model="name" value="{{name}}">
+			        </label>
+						</div>
+						<div class="padding">
+							<a class="button button-block button-positive" href="#/tab/home" ng-click="save()">提交</a>
+						</div>
+					</div>
+				</ion-content>
+			</ion-view>
+		</script>
+		<script id="templates/jobinformation.html" type="text/ng-template">
+			<ion-view view-title="职位信息">
+				<ion-content class="padding">
+					<p>&nbsp;</p>
+					<div class="item item-divider">
+						<p>
+							<font size="5"><strong>{{job.name}}</strong></font>
+							&nbsp;&nbsp;&nbsp;
+							<font color="red" size="2">{{job.salaryMin+"-"+job.salaryMax}}元</font>
+						</p>
+						<p>
+							<font size="3">{{job.add}}</font>
+							<p>
+					</div>
+					<p>&nbsp;</p>
+					<div style="background-color: whitesmoke;border:1px solid lightgray;">
+						<a class="button icon icon-right ion-chevron-right" href="#/tab/companyinformation/{{company._id}}">
+							<font size="4">{{company.name}}</font><span style="MARGIN-left:90px;"></span></a>
+					</div>
+					<div class="item item-divider">
+						<i class="icon ion-closed-captioning"></i>&nbsp;营业执照认证&nbsp;
+						<i class="icon ion-person"></i>&nbsp;法人认证&nbsp;
+						<i class="icon ion-chatbox"></i>&nbsp;工作证明
+					</div>
+					<p>&nbsp;</p>
+					<div class="item item-divider">
+						<p>
+							<b><font size="5">福利</font></b>
+						</p>
+						<p>&nbsp;</p>
+						<p>
+							&nbsp;
+							<i class="icon ion-plus"></i> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<i class="icon ion-shuffle"></i> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<i class="icon ion-medkit"></i> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<i class="icon ion-arrow-graph-up-right"></i>
+						</p>
+						<p>
+							话补&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 周末双休&nbsp;&nbsp; 交通补助&nbsp;&nbsp; 年底双薪
+
+						</p>
+					</div>
+					<p>&nbsp;</p>
+					<div style="background-color: whitesmoke;border:1px solid lightgray;">
+						<p>
+							&nbsp;&nbsp;<strong><font size="5">职位描述：</font></strong>
+						</p>
+						<div>
+							{{job.jobInfo}}
+						</div>
+					</div>
+					<p>&nbsp;</p>
+					<div>
+						<p>
+							<center>
+								<button class="button button-positive">申请职位</button>
+
+								<a href="{{isSelfCompany?'#':'#/tab/massage'}}"><button class="button button-positive" ng-click="setJmpCmd()">{{isSelfCompany?'联系他（自己的公司）':'联系他'}}</button></a>
+								<!--ng-click="goMassageDetail(company.admin)"-->
+								<button class="button button-positive" ng-click="collectOrDisCollect(job)">{{collected?'取消收藏':'收藏'}}</button>
+							</center>
+						</p>
+					</div>
+				</ion-content>
+			</ion-view>
+		</script>
+
+		<script id="templates/companyinformation.html" type="text/ng-template">
+			<ion-view view-title="公司信息">
+				<ion-content class="padding">
+					<p>
+						<center>
+							</ceter><strong><font size="6">{{company.name}}</font></strong></center>
+					</p>
+					&nbsp;
+					</p>
+					<p>
+						&nbsp;企业规模:&nbsp;{{company.scope}}
+					</p>
+					<p>
+						&nbsp;企业类型:&nbsp;{{company.type}}
+					</p>
+					<p>
+						&nbsp;所在城市:&nbsp;{{company.city}}
+					</p>
+					<p>&nbsp;</p>
+					<p>
+						&nbsp;<strong><font size="5">公司简介</font></strong>
+					</p>
+					<p>
+						{{company.introduction}}
+					</p>
+
+				</ion-content>
+			</ion-view>
+		</script>
+		<!--登录-->
+		<script id="templates/login.html" type="text/ng-template">
+			<ion-view view-title="登录" hide-tabs="true">
+				<!--
+                                                         	hide-tabs="true"
+                                                         -->
+				<ion-content class="padding">
+					<p>
+						<center>
+							<h3>手机验证登录</h3></center>
+					</p>
+					<p>&nbsp;</p>
+					<div class="list">
+						<label class="item item-input">
+			          +86&nbsp;<input type="text" placeholder="" ng-model="tel"> <!--ng-model="name"-->
+			        </label>
+					</div>
+					<div class="list">
+						<label class="item item-input">
+			          <input type="text" placeholder="请输入验证码" ng-model="code"><button>获取验证码</button>&nbsp; &nbsp; &nbsp; <!--ng-model="name"-->
+			        </label>
+					</div>
+					<p>&nbsp;</p>
+					<p>
+						<a class="button button-block button-positive" href="" ng-click="save()">登录</a>
+					</p>
+					<p>
+						<div class="col">
+							<div class="col-demo">
+								<a href="#/tab/namelogin">
+									<font color="black">用户名登录</font>
+								</a>
+								<span style="MARGIN-left:240px;">
+		        				<a href="#/tab/register"><font color="black">注册</font></a>
+		        			</span>
+							</div>
+						</div>
+					</p>
+				</ion-content>
+			</ion-view>
+		</script>
+		<!--注册-->
+		<script id="templates/register.html" type="text/ng-template">
+			<ion-view view-title="注册" hide-tabs="true">
+				<ion-content class="padding">
+					<p>&nbsp;</p>
+					<p>
+						<center>
+							<h3>注册</h3></center>
+					</p>
+					<p>&nbsp;</p>
+					<label class="item item-input">
+			          <input type="text" placeholder="用户名" ng-model="nickname"> <!--ng-model="name"-->
+			        </label>
+					<div>
+						<label class="item item-input">
+			    	<input type="password" placeholder="密码" ng-model="pw">
+			    	</label>
+					</div>
+					<!--<div class="list">
+						<label class="item item-input">
+			          <input type="text" placeholder="请输入验证码" ng-model="code"><button>获取验证码</button>&nbsp; &nbsp; &nbsp; 
+			        </label>
+					</div>-->
+					<p>
+						<center><input type="checkbox" name="group">&nbsp;&nbsp;&nbsp;我已阅读并同意服务条款和隐私权条款</center>
+					</p>
+					<p>
+						&nbsp;
+					</p>
+					<p>
+						<a class="button button-block button-positive" ng-click="save(nickname,pw)">立即注册</a>
+					</p>
+
+				</ion-content>
+			</ion-view>
+		</script>
+		<!--用户名登录-->
+		<script id="templates/namelogin.html" type="text/ng-template">
+			<ion-view view-title="用户名登录" hide-tabs="true">
+				<ion-content class="padding">
+					<p>&nbsp;</p>
+					<p>
+						<center>
+							<h3>用户名登录</h3></center>
+					</p>
+					<p>&nbsp;</p>
+					<label class="item item-input">
+			          <input type="text" placeholder="用户名" ng-model="nickname"> <!--ng-model="name"-->
+			        </label>
+					<label class="item item-input">
+			          <input type="password" placeholder="密码" ng-model="pw"> <!--ng-model="name"-->
+			        </label>
+					<p>&nbsp;</p>
+					<p>
+						<a class="button button-block button-positive" ng-click="save(nickname,pw)">登录</a>
+					</p>
+					<p>
+						<div class="col">
+							<div class="col-demo">
+
+								<span style="margin-right:20px;float:right;">
+		        				<a href="#/tab/register"><font color="black">注册</font></a>
+		        			</span>
+							</div>
+						</div>
+					</p>
+				</ion-content>
+			</ion-view>
+		</script>
+
+	</body>
+
+</html>

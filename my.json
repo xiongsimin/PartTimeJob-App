@@ -1,0 +1,33 @@
+{
+	"center": {
+		"Nickname": "抄抄也要温文如玉",
+		"Birthday": "2018-9-5",
+		"Sex": "女",
+		"Phone": "110",
+		"Name": "刘禹超",
+		"Company": "燕大"
+	},
+	"job": {
+		"id": 1,
+		"name": "经理助理/秘书/文员",
+		"wages": "3000-5000",
+		"add": "内勤人员",
+		"company": "寿康人寿保险股份有限公司",
+		"describe": "1、年龄25-50岁；男女不限，工作时间有弹性，不耽误接送孩子，照顾家庭；"
+	},
+	"historyinformation": 
+	{
+		"Name":"泰康人寿股份有限公司",
+		"Job": "经理助理/秘书/文员",
+		"Wages": "3000-5000",
+		"City": "秦皇岛"
+	},
+	"companyinformation": {
+		"id": 1,
+		"Name": "泰康人寿股份有限公司",
+		"Scale": "大型",
+		"Type": "保险业务",
+		"City": "秦皇岛",
+		"Introduction": "我们是寿康人寿保险股份有限公司"
+	}
+}

@@ -1,0 +1,40 @@
+{
+	"chats": [
+		{
+			"id":1,
+			"name": "熊思敏",
+			"time": "2018/9/7",
+			"massage": "你好！",
+			"displayPicture":"img/1.jpg",
+			"self":false
+		}, {
+			"id":2,
+			"name": "李安南",
+			"time": "2018/9/6",
+			"massage": "今天天气不错！",
+			"displayPicture":"img/2.jpg",
+			"self":false
+		},{
+			"id":3,
+			"name": "刘禹超",
+			"time": "2018/9/5",
+			"massage": "nice to meet you！",
+			"displayPicture":"img/3.jpg",
+			"self":false
+		}, {
+			"id":4,
+			"name": "刘琦",
+			"time": "2018/9/5",
+			"massage": "再见！",
+			"displayPicture":"img/4.jpg",
+			"self":false
+		},{
+			"id":5,
+			"name": "李可航",
+			"time": "2018/9/5",
+			"massage": "吃饭去！",
+			"displayPicture":"img/5.jpg",
+			"self":false
+		}
+		]
+}
