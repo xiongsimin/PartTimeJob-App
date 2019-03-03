@@ -1,4 +1,4 @@
-# 校内实训：兼职App
+# 校内实训：兼职App前端
 <p align="center"><img src="/项目截图/登录页.PNG" /></p>
 <p align="center">登录页</p>
 <p align="center"><img src="/项目截图/主页.PNG" /></p>
