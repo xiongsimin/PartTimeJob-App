@@ -12,3 +12,4 @@
 ps:<br>
 1.后端代码：<a href="https://github.com/puresox/College-Student-Part-time-Recruitment-Backend"> 小组成员：puresox-生产实习：大学生兼职招聘app后端</a> <br>
 2.<a href="/unpackage/release/m123_0303170050.apk">App安装包</a>
+3.测试账号：xiong 密码：123456
